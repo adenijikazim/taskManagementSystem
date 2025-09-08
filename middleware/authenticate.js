@@ -14,8 +14,12 @@ throw new UnauthenticatedError('No token present')
 
 }
 try {
-    const {name,userId,role} = jwt.verify(token, process.env.JWT_SECRET)
-    console.log(payload)
+    // const {name,userId,role} = jwt.verify(token, process.env.JWT_SECRET)
+    // console.log(payload)
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET)
+    req.user = decodedToken
+    console.log(decodedToken)        
+
     req.user = {
         name,userId,role,email
     }
