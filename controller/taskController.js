@@ -37,8 +37,6 @@ if(!task){
     throw new NotFoundError(`No task with the id: ${req.params.id}`)
 }
 
-// await task.remove()
-
 res.status(StatusCodes.OK).json({msg:'task removed'})
 
 }

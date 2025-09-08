@@ -1,4 +1,3 @@
-// const { UnauthenticatedError, BadRequestError } = require('../error')
 const User = require('../model/userModel')
 const {StatusCodes} = require('http-status-codes')
 const { attachCookiesToResponse } = require('../utils/jwt')
@@ -25,18 +24,6 @@ const showCurrentuser = (req,res)=>{
     res.status(StatusCodes.OK).json({user:req.user})
 }
 
-/*const updateUser = async(req,res)=>{
-    const {name, email} = req.body
-    const user = await user.findOneAndUpdate(
-        {_id:req.user.userId},
-        {name,email},
-        {new:true, runValidators:true})
-        
-   const tokenUser = {userId:user._id, name:user.name, role:user.role}
-   const token = attachCookiesToResponse({res, user:tokenUser})
-   res.status(StatusCodes.CREATED).json({user:tokenUser})
-
-}*/
 const updateUser = async(req,res)=>{
     const {name, email} = req.body
     const user = await User.findOne({_id:req.user.userId})

@@ -14,8 +14,6 @@ const register = async(req,res)=>{
 
     const user = await User.create({name,email,password,role})
 
-    /*const token = createJWT({payload:tokenUser})
-    res.status(StatusCodes.CREATED).json({user:tokenUser, token})*/
 
    const userData = {userId:user._id, name:user.name, role:user.role }
    const token = jwt.sign({id:user._id, role:user.role}, process.env.JWT_SECRET,{expiresIn:process.env.JWT_EXPIRES})
@@ -51,7 +49,6 @@ const login = async(req,res)=>{
     }
 
    const tokenUser = {userId:user._id, name:user.name, role:user.role}
-    // const token = createJWT({payload:tokenUser})
     const token = jwt.sign({id:user._id, role:user.role}, process.env.JWT_SECRET,{expiresIn:process.env.JWT_EXPIRES})
     console.log(token)
     const oneDay = 1000*60*60*24
