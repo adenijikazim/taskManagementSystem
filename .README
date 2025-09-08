@@ -11,7 +11,7 @@ Tasks
 - *POST /tasks*: Create a new task
     - Request Body: `{ description: string, completed: boolean }`
     - Response: `201 Created` with task object
-    
+
 - *GET /tasks*: Retrieve all tasks
     - Response: `200 OK` with array of task objects
 
